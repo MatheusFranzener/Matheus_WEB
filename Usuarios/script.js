@@ -27,7 +27,7 @@ function getUserReposGithub(userName) {
         .then(function (resultado) {
             resultado.json().then(function (data) {
                 console.log('Repositories Data:', data);
-            });
+            })
         }).catch(function (erro) {
             console.log('erro:', erro);
         });
