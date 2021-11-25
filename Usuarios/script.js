@@ -1,5 +1,10 @@
+let userName = document.location.search;
+let userName2 = userName.replace('?','');
+
+let avatar = document.createElement('img');
+
 function getUserGithub(userName) {
-    fetch('https://fake-github.herokuapp.com/api/' + userName)
+    fetch('https://fake-github.herokuapp.com/api/search/' + userName)
         .then(function (resultado) {
             resultado.json().then(function (data) {
                 console.log('User Data:', data);
@@ -18,7 +23,7 @@ function showUserGithub(user) {
 }
 
 function getUserReposGithub(userName) {
-    fetch('https://fake-github.herokuapp.com/api/' + userName + '/repos')
+    fetch('https://fake-github.herokuapp.com/api/search/' + userName + '/repos')
         .then(function (resultado) {
             resultado.json().then(function (data) {
                 console.log('Repositories Data:', data);
