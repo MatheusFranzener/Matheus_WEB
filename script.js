@@ -20,8 +20,18 @@ const listaUsuarios = [
     { name: 'Otavio Matheus Neves', userName: 'otavionvs' }
 ]
 
+
 let divBody = document.querySelector('body');
+let botaoCadastro = document.createElement('button');
+
+divBody.appendChild(botaoCadastro);
+botaoCadastro.className = 'botaoCadastro'
+botaoCadastro.onclick = clickButtonRegisteryPerson;
+botaoCadastro.innerText = "Cadastrar novo Usuário";
+
 divBody.appendChild(criarTabela());
+
+
 
 function criarTabela(){
     let tabelaAtual = document.querySelector('table');
@@ -79,13 +89,6 @@ function dadosTabela(name, userName) {
 
     return linha;
 }
-
-let botaoCadastro = document.createElement('button');
-divBody.appendChild(botaoCadastro);
-botaoCadastro.className = 'botaoCadastro'
-botaoCadastro.onclick = clickButtonRegisteryPerson;
-botaoCadastro.innerText = "Cadastrar novo Usuário";
-
 
 function clickButtonRegisteryPerson() {
     const modal = createModal();

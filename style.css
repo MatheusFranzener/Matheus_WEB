@@ -4,6 +4,7 @@ th,
 td {
     border: black 1px solid;
     margin-left: 10px;
+    margin-top: 10px;
 }
 
 a{
@@ -48,13 +49,6 @@ a{
     justify-content: center;
 }
 
-table,
-tr,
-th,
-td {
-    border: black 1px solid;
-}
-
 .botaoCadastro{
-    margin-left: 90%;
+    margin-left: 10px;
 }
