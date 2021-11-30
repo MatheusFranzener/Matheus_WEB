@@ -20,9 +20,16 @@ const listaUsuarios = [
     { name: 'Otavio Matheus Neves', userName: 'otavionvs' }
 ]
 
-document.body.appendChild(criarTabela());
+let divBody = document.querySelector('body');
+divBody.appendChild(criarTabela());
 
 function criarTabela(){
+    let tabelaAtual = document.querySelector('table');
+
+    if(tabelaAtual){
+        tabelaAtual.remove();
+    }
+
     const tabela = document.createElement('table');
     const linha = document.createElement('tr');
     const colunaNome = document.createElement('th');
@@ -38,7 +45,7 @@ function criarTabela(){
     linha.appendChild(colunaUsuario);
     linha.appendChild(botaoUsuario);
 
-    document.body.appendChild(tabela);
+    divBody.appendChild(tabela);
 
     listaUsuarios.forEach(function (element) {
         const linhaTabela = dadosTabela(
@@ -46,7 +53,8 @@ function criarTabela(){
             element.userName)
 
         tabela.appendChild(linhaTabela);
-    })
+        }
+    )
 
     return tabela;
 }
@@ -64,18 +72,20 @@ function dadosTabela(name, userName) {
     colunaName.innerText = name;
     colunaUsername.innerText = userName;
 
-    botaoUsuario.appendChild(a);
-    linha.appendChild(colunaName);
-    linha.appendChild(colunaUsername);
+    botaoUsuario.appendChild(a);        
+    linha.appendChild(colunaName);  
+    linha.appendChild(colunaUsername);  
     linha.appendChild(botaoUsuario);
 
     return linha;
 }
 
 let botaoCadastro = document.createElement('button');
-document.body.appendChild(botaoCadastro);
+divBody.appendChild(botaoCadastro);
+botaoCadastro.className = 'botaoCadastro'
 botaoCadastro.onclick = clickButtonRegisteryPerson;
-botaoCadastro.innerText = "Cadastrar Pessoa";
+botaoCadastro.innerText = "Cadastrar novo Usuário";
+
 
 function clickButtonRegisteryPerson() {
     const modal = createModal();
@@ -87,12 +97,13 @@ function clickButtonRegisteryPerson() {
 }
 
 function createModal() {
+
     let background = document.createElement('div');
     background.id = "background-modal";
     let modal = document.createElement('div');
     modal.id = "modal";
     background.appendChild(modal);
-    document.body.appendChild(background);
+    divBody.appendChild(background);
 
     let header = document.createElement('div');
     let main = document.createElement('div');
@@ -129,8 +140,8 @@ function createModal() {
         insertHeader: insertHeader,
         insertMain: insertMain,
         insertFooter: insertFooter,
-    }
-
+    }   
+      
     return retorno;
 }
 
@@ -138,7 +149,7 @@ function getContentRegesteryPersonModal(removeModal) {
     const header = document.createElement('div');
     header.id = 'person-header';
     const title = document.createElement('h1');
-    title.innerText = 'Cadastro Pessoa';
+    title.innerText = 'Cadastrar novo Usuário';
     header.appendChild(title);
 
     const main = document.createElement('div');
@@ -153,7 +164,6 @@ function getContentRegesteryPersonModal(removeModal) {
     inputSobrenome.type = 'text';
     inputSobrenome.placeholder = 'Usuario';
     main.appendChild(inputSobrenome);
-
 
     const footer = document.createElement('div');
     footer.id = 'person-footer';
@@ -189,12 +199,11 @@ function getContentRegesteryPersonModal(removeModal) {
     }
 }
 
-function registeryPerson(name,  userName) {
-    let person = {
+function registeryPerson(name, userName) {
+    let dados = {
         name: name,
-         userName:  userName,
-    }
-
-    listaUsuarios.push(person);
+        userName:  userName,
+    }   
+    listaUsuarios.push(dados);
     criarTabela();
 }
